@@ -1,0 +1,9 @@
+.icon-small {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.card-body {
+  padding: 2px;
+}
