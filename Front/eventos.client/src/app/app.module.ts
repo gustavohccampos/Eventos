@@ -7,9 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventoComponent } from './evento/evento.component';
+import { EventoComponent } from './components/evento/evento.component';
+import { PalestranteComponent } from './components/palestrante/palestrante.component';
+import { ContatosComponent } from './components/contatos/contatos.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 //
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { TituloComponent } from './shared/titulo/titulo.component';
 //
 import { EventoService } from './services/evento.service';
 //
@@ -25,11 +30,18 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     EventoComponent,
-    NavComponent
+    NavComponent,
+    TituloComponent,
+    PalestranteComponent,
+    ContatosComponent,
+    DashboardComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
