@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -19,6 +19,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -47,9 +48,19 @@ import { ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
       progressBar:true,
     }),
+    NgxSpinnerModule.forRoot({
+      type: 'ball-scale-multiple'
+    }),
+
 
   ],
-  providers: [EventoService,],
-  bootstrap: [AppComponent]
+  providers:
+    [EventoService,],
+
+  bootstrap:
+    [AppComponent],
+
+  schemas:
+    [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

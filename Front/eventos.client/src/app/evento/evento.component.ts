@@ -4,13 +4,14 @@ import { EventoService } from '../services/evento.service';
 import { Evento } from '../models/evento';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
   selector: 'app-evento',
   templateUrl: './evento.component.html',
   styleUrl: './evento.component.css'
- // providers: [EventoService]
+  // providers: [EventoService]
 })
 export class EventoComponent implements OnInit {
   modalRef!: BsModalRef;
@@ -30,21 +31,27 @@ export class EventoComponent implements OnInit {
   constructor(
     private eventoService: EventoService,
     private modalService: BsModalService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService,
   ) { }
 
 
- ngOnInit(): void {
+  ngOnInit(): void {
+    this.spinner.show();
     this.GetEventos();
+
+    // setTimeout(() => {
+    //  //spinner 5 secodns delay
+    //},5000);
   }
 
 
-  public ChangeImage():void {
+  public ChangeImage(): void {
     this.exibirImagem2 = !this.exibirImagem2;
 
   }
 
-  public alterarImagem() :void{
+  public alterarImagem(): void {
     this.exibirImagem1 = !this.exibirImagem1;
   }
 
@@ -72,15 +79,19 @@ export class EventoComponent implements OnInit {
   }
 
   public GetEventos(): void {
-    this.eventoService.getEventos().subscribe(
-      (eventos : Evento[]) => {
-        this.eventos = eventos,
-          this.eventosFiltrados = this.eventos;
+    this.eventoService.getEventos().subscribe({
+      next: (eventos: Evento[]) => {
+        this.eventos = eventos;
+        this.eventosFiltrados = this.eventos;
       },
-      error => console.log(error),
-    );
+      error: (error: any) => {
+      this.spinner.hide();
+      this.toastr.error('Erro ao carregar Eventos!', 'Erro!');
+    },
+      complete: () => this.spinner.hide()
+    });
   }
-
+      
 
   openModal(template: TemplateRef<void>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
@@ -88,7 +99,7 @@ export class EventoComponent implements OnInit {
 
   confirm(): void {
     this.modalRef?.hide();
-    this.toastr.success('TESTE TOASTR', 'TITULO TOASTR!');
+    this.toastr.success('Evento excluido com sucesso!', 'Evento Excluido!');
   }
 
   decline(): void {
