@@ -16,14 +16,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class EventoComponent implements OnInit {
   modalRef!: BsModalRef;
 
-  public titulo = "Evento";
-
   public eventos: Evento[] = [];
 
   public eventosFiltrados: Evento[] = [];
 
-  public exibirImagem1: boolean = false;
-  public exibirImagem2: boolean = false;
+  public exibirImagem1: boolean = true;
+  public exibirImagem2: boolean = true;
   private larguraImagem: number = 150;
   private margemImagem: number = 200;
   private filtroListado: string = "";

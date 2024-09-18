@@ -1,1 +1,64 @@
 <app-titulo [titulo]="'DashBoard'"></app-titulo>
+
+
+
+<div class="form-group d-flex justify-content-center mb-4">
+    <button class="btn btn-outline-dark btn-sm"
+            (click)="ChangeImage()">
+        <i class="{{exibirImagem2 ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+        {{ exibirImagem2 ? '' : '' }}
+    </button>
+</div>
+
+<!-- Filtro como botão -->
+<div class="d-flex justify-content-left mb-4">
+
+    <div class="input-group" style="max-width: 400px;">
+        <div class="input-group-prepend">
+            <span class="input-group-text btn btn-dark text-white" id="filtro-label" style="border-radius: 3px;">
+                Filtro:
+            </span>
+        </div>
+
+        <input type="text" class="form-control"
+               placeholder="Buscar"
+               aria-label="Filtro"
+               [(ngModel)]="filtroLista"
+               style="border-radius: 3px;">
+    </div>
+</div>
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+    <div class="col" *ngFor="let eventos of eventosFiltrados">
+
+        <div class="card shadow-sm" style="border:0.5px solid black; border-radius:5px">
+            <div *ngIf="eventos.imagemURL">
+                <img src="/assets/images/{{eventos.imagemURL}}"
+                     class="card-img-top"
+                     alt="Imagem do Evento"
+                     style="height: 170px; object-fit: fill;border:0.5px solid black;"
+                     [collapse]="exibirImagem2"
+                     [isAnimated]="true">
+            </div>
+            <div class="card-body" style="border:0.5px solid black">
+                <h5 class="card-title"><b>{{eventos.nome}}</b></h5>
+                <p>Evento ID: {{eventos.id}}</p>
+                <p>Local: {{eventos.local}}</p>
+                <p>Pessoas: {{eventos.qtdPessoas}}</p>
+                <p>Lote: {{eventos.lotes[0].nome}}</p>
+                <p>
+                    <b>Data e Horário:</b>
+                    <small class="text-muted">{{eventos.dataEvento | date:'dd/MM/yyyy - HH:mm:ss' }}</small>
+                </p>
+            </div>
+            <div class="card-footer text-center" style="border:0.5px solid black">
+                <button type="button" class="btn btn-dark">Inscrever</button>
+            </div>
+        </div>
+    </div>
+</div>
