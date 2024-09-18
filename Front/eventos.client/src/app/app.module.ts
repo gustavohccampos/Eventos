@@ -25,6 +25,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { EventoDetalheComponent } from './components/evento/evento-detalhe/evento-detalhe.component';
+import { EventoListaComponent } from './components/evento/evento-lista/evento-lista.component';
 
 
 
@@ -41,7 +43,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PalestranteComponent,
     ContatosComponent,
     DashboardComponent,
-    PerfilComponent
+    PerfilComponent,
+    EventoDetalheComponent,
+    EventoListaComponent
   ],
   imports: [
     BrowserModule,

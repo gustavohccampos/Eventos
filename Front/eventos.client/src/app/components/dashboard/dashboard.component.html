@@ -2,20 +2,21 @@
 
 
 
-<div class="form-group d-flex justify-content-center mb-4">
-    <button class="btn btn-outline-dark btn-sm"
-            (click)="ChangeImage()">
-        <i class="{{exibirImagem2 ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
-        {{ exibirImagem2 ? '' : '' }}
-    </button>
-</div>
+
 
 <!-- Filtro como botão -->
-<div class="d-flex justify-content-left mb-4">
+<div class="d-flex justify-content-left">
 
     <div class="input-group" style="max-width: 400px;">
+        <div class="form-group d-flex justify-content-center mb-4 me-auto">
+            <button class="btn btn-outline-dark btn-sm"
+                    (click)="ChangeImage()">
+                <i class="{{exibirImagem2 ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+                {{ exibirImagem2 ? '' : '' }}
+            </button>
+        </div>
         <div class="input-group-prepend">
-            <span class="input-group-text btn btn-dark text-white" id="filtro-label" style="border-radius: 3px;">
+            <span class="input-group-text btn btn-dark text-white" id="filtro-label" style="border-radius: 3px;margin-left:30px">
                 Filtro:
             </span>
         </div>
@@ -24,15 +25,17 @@
                placeholder="Buscar"
                aria-label="Filtro"
                [(ngModel)]="filtroLista"
-               style="border-radius: 3px;">
+               style="border-radius: 3px; height:40px">
     </div>
+
+ 
 </div>
 
 
 
 
 
-<div class="row row-cols-1 row-cols-md-4 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4">
 
     <div class="col" *ngFor="let eventos of eventosFiltrados">
 

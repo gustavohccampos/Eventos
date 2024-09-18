@@ -5,10 +5,21 @@ import { PalestranteComponent } from './components/palestrante/palestrante.compo
 import { ContatosComponent } from './components/contatos/contatos.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { EventoDetalheComponent } from './components/evento/evento-detalhe/evento-detalhe.component';
+import { EventoListaComponent } from './components/evento/evento-lista/evento-lista.component';
 
 
 const routes: Routes = [
-  { path: 'eventos', component: EventoComponent },
+
+  { path: 'eventos', redirectTo: 'eventos/lista' },
+  {
+    path: 'eventos', component: EventoComponent,
+    children: [
+      { path: 'detalhe/:id', component: EventoDetalheComponent },
+      { path: 'detalhe', component: EventoDetalheComponent },
+      { path: 'lista', component: EventoListaComponent },
+    ]
+  },
   { path: 'palestrantes', component: PalestranteComponent },
   { path: 'contatos', component: ContatosComponent },
   { path: 'dashboard', component: DashboardComponent },
