@@ -1,1 +1,129 @@
 <app-titulo [titulo]="'Perfil'"></app-titulo>
+
+
+<div class="card-body rounded shadow-sm bg-white">
+
+    <div class="container mt-1 shadow-sm ">
+        <div class="row">
+            <!-- Sidebar com perfil -->
+            <div class="col-lg-4 mt-2">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body text-center">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"
+                             alt="Perfil" class="rounded-circle mb-3" width="120" height="120">
+                        <h5 class="card-title mb-2">usuario</h5>
+                        <p class="text-muted mb-3">Miracles Lee Cross</p>
+                        <p class="small mb-3">
+                            Developer de aplicações web, com experiência em JavaScript, PHP, Java, Python, Ruby, etc.
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <h6 class="mb-1">1342</h6>
+                                        <small class="text-muted">Eventos Ministrados</small>
+                                    </div>
+                                    <div class="col text-center">
+                                        <h6 class="mb-1">1342</h6>
+                                        <small class="text-muted">Eventos Participados</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col text-center">
+                        <img src="/assets/images/certificado.png" style="height:85px;width:85px">
+
+                    </div>
+                      </div>
+            </div>
+
+
+            <!-- Formulário de perfil -->
+            <div class="col-lg-8 mt-2">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h4 class="mb-4">Detalhes do Perfil</h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="titulo" class="form-label">Título</label>
+                                    <select id="titulo" class="form-select">
+                                        <option value="">Selecione...</option>
+                                        <option value="0">Não Quero</option>
+                                        <option value="Tecnologo">Tecnólogo(a)</option>
+                                        <option value="Bacharel">Bacharel</option>
+                                        <option value="Especialista">Especialista</option>
+                                        <option value="Pós Graduado">Pós Graduado(a)</option>
+                                        <option value="Mestre">Mestre</option>
+                                        <option value="Doutor">Doutor(a)</option>
+                                        <option value="Pós Doc">Pós Doc</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="firstName" class="form-label">Nome</label>
+                                    <input type="text" id="firstName" class="form-control" placeholder="Insira o primeiro nome">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="lastName" class="form-label">Sobrenome</label>
+                                    <input type="text" id="lastName" class="form-control" placeholder="Insira o último nome">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <input type="email" id="email" class="form-control" placeholder="exemplo@dominio.com">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Telefone</label>
+                                    <input type="tel" id="phone" class="form-control" maxlength="15" placeholder="(XX) XXXX-XXXX">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="role" class="form-label">Função</label>
+                                <select id="role" class="form-select">
+                                    <option value="">Selecione...</option>
+                                    <option value="Participante">Participante</option>
+                                    <option value="Palestrante">Palestrante</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label">Descrição</label>
+                                <textarea id="descricao" class="form-control" rows="3" placeholder="Fale um pouco sobre você..."></textarea>
+                            </div>
+
+                            <hr>
+                            <h5 class="mb-3">Alterar Senha</h5>
+                            <p class="small text-muted">Caso deseje mudar sua senha, preencha os campos abaixo:</p>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="password" class="form-label">Nova Senha</label>
+                                    <input type="password" id="password" class="form-control" placeholder="Digite sua nova senha">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirmar Nova Senha</label>
+                                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirme a nova senha">
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-outline-secondary">Cancelar Alterações</button>
+                                <button class="btn btn-success">
+                                    <span class="spinner-border spinner-border-sm mr-1"></span>
+                                    Salvar Alteração
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  
+
+</div>

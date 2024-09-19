@@ -1,20 +1,23 @@
+<div class="d-flex align-items-center justify-content-center bg-light">
+    <div class="card shadow p-3 rounded-3" style="max-width: 350px; margin-top: 45px; margin-bottom: 0;font-size:13px">
+        <div class="card-body text-center">
+            <i class="fa fa-users fa-2x mb-2 text-dark"></i>
+            <h1 class="h6 mb-3">Login</h1>
 
-<div class="d-flex align-items-center vh-100">
+            <form class="form-signin">
+                <div class="form-floating mb-2">
+                    <input type="email" id="username" class="form-control form-control-sm" placeholder="Usuário" name="username" required style="height: 38px;">
+                    <label for="username">Usuário</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" id="password" class="form-control form-control-sm" placeholder="Senha" name="password" required style="height: 38px;">
+                    <label for="password">Senha</label>
+                </div>
+                <button class="btn btn-dark w-100 btn-sm" type="submit" style="height: 38px;">Entrar</button>
+            </form>
 
-    <div class="mx-auto text-center shadow-sm bg-white rounded p-5 my-5">
-
-        <form class="form-signin">
-            <i class="fa fa-users mb-2"></i>
-            <h1 class="h3 mb-3 font-weight-normal">Entrar com</h1>
-            <label for="username" class="sr-only">Usuário</label>
-            <input type="email" id="username" class="form-control" placeholder="Usuário" name="username" required>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" class="form-control" placeholder="Senha" name="password" required>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-            <p class="mt-4 mb-2 text-muted">Não tem login? Cadastre-se abaixo</p>
-            <a class="btn btn-lg btn-link btn-block">Quero me cadastrar</a>
-        </form>
-
+            <p class="mt-3 mb-1 text-muted small">Não tem login? Cadastre-se abaixo</p>
+            <a class="btn btn-link btn-sm" routerLink="/user/registration">Quero me cadastrar</a>
+        </div>
     </div>
-
 </div>

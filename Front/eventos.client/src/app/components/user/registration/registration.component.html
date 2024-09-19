@@ -1,15 +1,72 @@
-<div class="row mt-4">
+<div class="container mt-3">
+    <div class="row justify-content-center align-items-center">
+        <!-- Left side with image and title -->
+        <div class="col-md-5 d-none d-md-flex align-items-center justify-content-center">
+            <div class="text-center">
+                <h2 class="h5 mb-3">Cadastro de Usuário</h2>
+                <img src="/assets/images/register.png" class="img-fluid" alt="Cadastro de Usuário" width="300">
+            </div>
+        </div>
 
-	<div class="col-md-6 d-none d-md-block" style="height: 450px;">
-		<div class="text-center col-md-12 my-auto side-heder">
-			<h1>Cadastro de Usuário</h1>
-            <img src="/assets/images/register.png" class="my-4" alt="" width="400px">
-		</div>
-	</div>
+        <!-- Registration form -->
+        <div class="col-md-6">
+            <form class="card shadow-sm p-3 rounded-4">
+                <div class="pb-2 d-md-none text-center">
+                    <h3 class="h6 border-bottom pb-2">Cadastro de Usuário</h3>
+                </div>
 
-	<div class="col-md-6">
+                <!-- First and last name -->
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="form-label small">Primeiro Nome</label>
+                        <input type="text" class="form-control form-control-sm" id="firstName" placeholder="Primeiro nome" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="lastName" class="form-label small">Último Nome</label>
+                        <input type="text" class="form-control form-control-sm" id="lastName" placeholder="Último nome" required>
+                    </div>
+                </div>
 
-		<!--FORM VAI AQUI-->
+                <!-- Email and username -->
+                <div class="mb-2">
+                    <label for="email" class="form-label small">Email</label>
+                    <input type="email" class="form-control form-control-sm" id="email" placeholder="Insira o email" required>
+                </div>
+                <div class="mb-2">
+                    <label for="username" class="form-label small">Usuário</label>
+                    <input type="text" class="form-control form-control-sm" id="username" placeholder="Nome de Usuário" required>
+                </div>
 
-	</div>
+                <!-- Password and confirm password -->
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <label for="password" class="form-label small">Senha</label>
+                        <input type="password" class="form-control form-control-sm" id="password" placeholder="Senha" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="confirmPassword" class="form-label small">Confirmar Senha</label>
+                        <input type="password" class="form-control form-control-sm" id="confirmPassword" placeholder="Confirme a senha" required>
+                    </div>
+                </div>
+
+                <!-- Terms and conditions -->
+                <div class="form-check mb-3 text-start">
+                    <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                    <label class="form-check-label small" for="termsCheck">
+                        Eu concordo com os <a href="#">Termos de Uso</a>.
+                    </label>
+                </div>
+
+                <!-- Register button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-sm" style="background-color: #006400;">Registrar</button>
+                </div>
+
+                <!-- Already registered -->
+                <div class="text-center mt-2">
+                    <a routerLink="/user/login" class="btn btn-link btn-sm">Já sou cadastrado</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
