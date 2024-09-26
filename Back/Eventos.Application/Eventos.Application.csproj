@@ -6,6 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
    <ItemGroup>
     <ProjectReference Include="..\Eventos.Domain\Eventos.Domain.csproj" />
      <ProjectReference Include="..\Eventos.Persistence\Eventos.Persistence.csproj" />

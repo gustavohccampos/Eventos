@@ -5,6 +5,7 @@ using Eventos.Persistence.Data;
 using Eventos.Persistence.Interfaces;
 using Eventos.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,8 @@ builder.Services.AddControllers()
             .AddNewtonsoftJson(
                 x=>x.SerializerSettings.ReferenceLoopHandling =
                 Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IEventoService, EventoService>();
 builder.Services.AddScoped<IGeralPersistence, GeralPersistence>();

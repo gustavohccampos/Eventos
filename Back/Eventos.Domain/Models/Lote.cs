@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Eventos.Domain.Models;
 
@@ -15,7 +16,8 @@ public class Lote
     public int Quantidade { get; set; }
 
 
-    //
+
+    //[ForeignKey("Eventos")]
     public int EventoId { get; set; }
     
     public Evento? Evento { get; set; } 

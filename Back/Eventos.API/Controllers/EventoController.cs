@@ -1,9 +1,9 @@
-﻿using Eventos.Application.Interfaces;
+﻿using Eventos.Application.DTO;
+using Eventos.Application.Interfaces;
 using Eventos.Domain.Models;
-using Eventos.Persistence.Data;
-using Microsoft.AspNetCore.Http.HttpResults;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace Eventos.API.Controllers;
 
@@ -27,7 +27,9 @@ public class EventoController : GeralController
                 var eventos = await _eventoService.GetAllEventosAsync(true);
 
                 if (eventos == null)
-                    return NotFound("Nenhum Evento Encontrado!");
+                    return NoContent();
+
+            
 
                 return Ok(eventos);
             }
@@ -49,7 +51,8 @@ public class EventoController : GeralController
             var evento = await _eventoService.GetEventoByIdAsync(id,true);
 
             if (evento == null)
-                return NotFound($"Evento por ID:[{id}] Encontrado!");
+                return NoContent();
+            // return NotFound($"Evento por ID:[{id}] Encontrado!");
 
             return Ok(evento);
         }
@@ -70,7 +73,8 @@ public class EventoController : GeralController
             var evento = await _eventoService.GetAllEventosByTemaAsync(tema, true);
 
             if (evento == null)
-                return NotFound($"Nenhum Evento por Tema:[{tema}] Encontrado!");
+                return NoContent();
+            //return NotFound($"Nenhum Evento por Tema:[{tema}] Encontrado!");
 
             return Ok(evento);
         }
@@ -84,16 +88,17 @@ public class EventoController : GeralController
 
     // PUT: api/Evento/3
     [HttpPut("{id}")]
-        public async Task<IActionResult> PutEvento(int id, Evento model)
+        public async Task<IActionResult> PutEvento(int id, EventoDTO model)
         {
             try
             {
                 var evento = await _eventoService.UpdateEvento(id, model);
 
                 if (evento == null)
-                    return BadRequest($"Erro ao editar Evento!");
+                return NoContent();
+            //return BadRequest($"Erro ao editar Evento!");
 
-                return Ok(evento);
+            return Ok(evento);
             }
             catch (Exception ex)
             {
@@ -105,16 +110,17 @@ public class EventoController : GeralController
 
         // POST: api/Evento
         [HttpPost]
-        public async Task<ActionResult<Evento>> PostEvento(Evento model)
+        public async Task<ActionResult<Evento>> PostEvento(EventoDTO model)
         {
             try
             {
                 var evento = await _eventoService.AddEvento(model);
 
                 if (evento == null)
-                    return BadRequest($"Erro ao tentar adicionar Evento!");
+                return NoContent();
+            //return BadRequest($"Erro ao tentar adicionar Evento!");
 
-                return Ok(evento);
+            return Ok(evento);
             }
             catch (Exception ex)
             {
@@ -129,9 +135,13 @@ public class EventoController : GeralController
         {
         try
         {
-            return await _eventoService.DeleteEvento(id) ?  
-                Ok("Evento Deletado!") : 
-                BadRequest($"Erro ao editar Evento!");
+            var evento = await _eventoService.GetEventoByIdAsync(id, true);
+
+             if (evento == null) return NoContent();
+
+            return await _eventoService.DeleteEvento(id) ?
+                Ok("Evento Deletado!") :
+               throw new Exception("Erro ao deletar Evento.");
             
         }
         catch (Exception ex)
