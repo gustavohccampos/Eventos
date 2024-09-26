@@ -55,9 +55,9 @@
                 <td>{{evento.nome}}</td>
                 <td>{{evento.tema}}</td>
                 <td class="d-none d-md-table-cell">{{evento.local}}</td>
-                <td>{{evento.dataEvento | date:'dd/MM/yyyy - HH:mm'}}</td>
+                <td>{{evento.dataEvento | DateTimeConvert }}</td>
                 <td class="d-none d-md-table-cell">{{evento.qtdPessoas}}</td>
-                <td class="d-none d-md-table-cell">{{evento.lotes[0].nome | uppercase}}</td>
+                <td class="d-none d-md-table-cell">{{evento.lotes[0]?.nome | uppercase}}</td>
                 <td>
                     <button type="button" class="btn btn-danger btn-sm" (click)="openModal(template)">
                         <i class="fa fa-trash"></i>

@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -30,16 +33,21 @@ import { EventoListaComponent } from './components/evento/evento-lista/evento-li
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
+import { DateTimeFormatPipe } from './helpers/DateTimeFormatPipe.pipe';
+import { DateTimeConvertPipe } from './helpers/DateTimeConvertPipe.pipe';
+import { Constants } from './util/Constants';
 
 
 
-
+registerLocaleData(localePt);
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DateTimeFormatPipe,
+    DateTimeConvertPipe,
     EventoComponent,
     NavComponent,
     TituloComponent,
@@ -78,7 +86,10 @@ import { RegistrationComponent } from './components/user/registration/registrati
 
   ],
   providers:
-    [EventoService,],
+    [EventoService,
+      { provide: LOCALE_ID, useValue: Constants.LOCALE },
+    ],
+     
 
   bootstrap:
     [AppComponent],

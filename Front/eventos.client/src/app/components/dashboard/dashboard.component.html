@@ -53,10 +53,10 @@
                 <p>Evento ID: {{eventos.id}}</p>
                 <p>Local: {{eventos.local}}</p>
                 <p>Pessoas: {{eventos.qtdPessoas}}</p>
-                <p>Lote: {{eventos.lotes[0].nome}}</p>
+                <p>Lote: {{eventos.lotes[0]?.nome}}</p>
                 <p>
                     <b>Data e Horário:</b>
-                    <small class="text-muted">{{eventos.dataEvento | date:'dd/MM/yyyy - HH:mm:ss' }}</small>
+                    <small class="text-muted">{{ eventos.dataEvento | DateTimeConvert }}</small>
                 </p>
             </div>
             <div class="card-footer text-center" style="border:0.5px solid black">

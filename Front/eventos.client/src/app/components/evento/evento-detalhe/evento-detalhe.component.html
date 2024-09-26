@@ -9,7 +9,7 @@
                     <label for="tema" class="form-label small">Tema</label>
                     <input type="text" class="form-control form-control-sm" id="tema"
                     formControlName="tema"
-                    [ngClass]="{'is-invalid':f.tema.errors && f.tema.touched}"
+                    [ngClass]="cssValidator(f.tema)"
                     placeholder="Insira o Tema">
                     <div *ngIf="f.tema.errors?.required" class="invalid-feedback">
                         Tema é obrigatório.
@@ -26,7 +26,7 @@
                     <label for="local" class="form-label small">Local</label>
                     <input type="text" class="form-control form-control-sm" id="local"
                            formControlName="local"
-                           [ngClass]="{'is-invalid':f.local.errors && f.local.touched}"
+                           [ngClass]="cssValidator(f.local)"
                            placeholder="Insira o local">
                     <div *ngIf="f.local.errors?.required" class="invalid-feedback">
                         Local é obrigatório.
@@ -37,7 +37,7 @@
                     <label for="dataHora" class="form-label small">Data e Hora</label>
                     <input type="datetime-local" class="form-control form-control-sm"
                            formControlName="dataEvento"
-                           [ngClass]="{'is-invalid':f.dataEvento.errors && f.dataEvento.touched}"
+                           [ngClass]="cssValidator(f.dataEvento)"
                            id="dataHora">
                     <div *ngIf="f.dataEvento.errors?.required" class="invalid-feedback">
                         Data/Hora é obrigatório.
@@ -53,7 +53,7 @@
                     <label for="qtdPessoas" class="form-label small">Qtd Pessoas</label>
                     <input type="number" class="form-control form-control-sm" id="qtdPessoas"
                            formControlName="qtdPessoas"
-                           [ngClass]="{'is-invalid':f.qtdPessoas.errors && f.qtdPessoas.touched}"
+                           [ngClass]="cssValidator(f.qtdPessoas)"
                            placeholder="">
                     <div *ngIf="f.qtdPessoas.errors?.required" class="invalid-feedback">
                         Quantidade de Pessoas é obrigatório.
@@ -66,7 +66,7 @@
                     <label for="telefone" class="form-label small">Telefone</label>
                     <input type="tel" class="form-control form-control-sm" id="telefone"
                            formControlName="telefone"
-                           [ngClass]="{'is-invalid':f.telefone.errors && f.telefone.touched}"
+                           [ngClass]="cssValidator(f.telefone)"
                            placeholder="(31)98877-6655"
                            maxlength="11">
                     <div *ngIf="f.telefone.errors?.required" class="invalid-feedback">
@@ -78,7 +78,7 @@
                     <label for="email" class="form-label small">Email</label>
                     <input type="email" class="form-control form-control-sm" id="email"
                            formControlName="email"
-                           [ngClass]="{'is-invalid':f.email.errors && f.email.touched}"
+                           [ngClass]="cssValidator(f.email)"
                            placeholder="e-mail">
                     <div *ngIf="f.email.errors?.required" class="invalid-feedback">
                         Email é obrigatório.
@@ -91,7 +91,7 @@
                     <label for="imagemURL" class="form-label small">Imagem</label>
                     <input type="text" class="form-control form-control-sm" id="imagemURL"
                            formControlName="imagemURL"
-                           [ngClass]="{'is-invalid':f.imagemURL.errors && f.imagemURL.touched}"
+                           [ngClass]="cssValidator(f.imagemURL)"
                            placeholder="imagemURL">
                     <div *ngIf="f.imagemURL.errors?.required" class="invalid-feedback">
                         Imagem é obrigatório.
