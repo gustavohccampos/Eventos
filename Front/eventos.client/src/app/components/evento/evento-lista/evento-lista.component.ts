@@ -24,6 +24,7 @@ export class EventoListaComponent implements OnInit{
   private larguraImagem: number = 150;
   private margemImagem: number = 200;
   private filtroListado: string = "";
+  public eventoId: number =0;
 
 
   constructor(
@@ -92,7 +93,9 @@ export class EventoListaComponent implements OnInit{
   }
 
 
-  openModal(template: TemplateRef<void>) {
+  openModal(event:any, template: TemplateRef<void>, eventoId:number) {
+    event.stopPropagation();
+    this.eventoId = eventoId;
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 

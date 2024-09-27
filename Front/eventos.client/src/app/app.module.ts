@@ -24,6 +24,12 @@ import { EventoService } from './services/evento.service';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+
+
+
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -36,8 +42,10 @@ import { RegistrationComponent } from './components/user/registration/registrati
 import { DateTimeFormatPipe } from './helpers/DateTimeFormatPipe.pipe';
 import { DateTimeConvertPipe } from './helpers/DateTimeConvertPipe.pipe';
 import { Constants } from './util/Constants';
+import { DateTimeConvertNoSecondsPipe } from './helpers/DateTimeConvertNoSecondsPipe.pipe';
 
 
+defineLocale('pt-br', ptBrLocale); //DateTimepicker
 
 registerLocaleData(localePt);
 
@@ -48,6 +56,7 @@ registerLocaleData(localePt);
     AppComponent,
     DateTimeFormatPipe,
     DateTimeConvertPipe,
+    DateTimeConvertNoSecondsPipe,
     EventoComponent,
     NavComponent,
     TituloComponent,
@@ -71,6 +80,7 @@ registerLocaleData(localePt);
     CollapseModule.forRoot(),
     TooltipModule.forRoot(),
     BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 5000,

@@ -1,16 +1,16 @@
 <div class="card shadow-sm rounded-3">
     <div class="card-body p-3">
         <form [formGroup]="form">
-<!--             <p>FormValue:{{form.value | json}}</p>
-            <p>FormValid:{{form.status | json}}</p> -->
+            <!--             <p>FormValue:{{form.value | json}}</p>
+                <p>FormValid:{{form.status | json}}</p> -->
             <!-- Tema / Local e Data/Hora -->
             <div class="row mb-2">
                 <div class="col-md-4">
                     <label for="tema" class="form-label small">Tema</label>
                     <input type="text" class="form-control form-control-sm" id="tema"
-                    formControlName="tema"
-                    [ngClass]="cssValidator(f.tema)"
-                    placeholder="Insira o Tema">
+                           formControlName="tema"
+                           [ngClass]="cssValidator(f.tema)"
+                           placeholder="Insira o Tema">
                     <div *ngIf="f.tema.errors?.required" class="invalid-feedback">
                         Tema é obrigatório.
                     </div>
@@ -38,7 +38,10 @@
                     <input type="datetime-local" class="form-control form-control-sm"
                            formControlName="dataEvento"
                            [ngClass]="cssValidator(f.dataEvento)"
+                           value="{{evento.dataEvento | DateTimeConvertNoSeconds}}"
                            id="dataHora">
+                    <!-- bsDatepicker [bsConfig]="bsConfig"-->
+
                     <div *ngIf="f.dataEvento.errors?.required" class="invalid-feedback">
                         Data/Hora é obrigatório.
                     </div>
@@ -47,7 +50,7 @@
             </div>
 
 
-    <!-- Qtd Pessoas, Telefone e Email -->
+            <!-- Qtd Pessoas, Telefone e Email -->
             <div class="row mb-2">
                 <div class="col-md-2">
                     <label for="qtdPessoas" class="form-label small">Qtd Pessoas</label>
