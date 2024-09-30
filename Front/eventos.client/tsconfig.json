@@ -2,6 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+
+    "noImplicitAny": false, //erro da aula 153 refatorando codigo
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,

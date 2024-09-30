@@ -42,11 +42,11 @@ namespace Eventos.Application.DTO
         Phone(ErrorMessage = "[{0}] não é válido.")]
         public string? Telefone { get; set; }
 
-        public IEnumerable<LoteDTO> Lotes { get; set; }
-        public IEnumerable<RedeSocialDTO> RedesSociais { get; set; }
+        public IEnumerable<LoteDTO>? Lotes { get; set; }
+        public IEnumerable<RedeSocialDTO>? RedesSociais { get; set; }
 
 
-        public IEnumerable<PalestranteDTO> Palestrantes { get; set; }
+        public IEnumerable<PalestranteDTO>? Palestrantes { get; set; }
 
     }
 }

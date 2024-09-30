@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinner.show();
-    this.GetEventos();
+    this.getEventos();
   }
 
 
@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  public GetEventos(): void {
+  public getEventos(): void {
     this.eventoService.getEventos().subscribe({
       next: (eventos: Evento[]) => {
         this.eventos = eventos;

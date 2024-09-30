@@ -16,6 +16,8 @@ export class EventoDetalheComponent implements OnInit{
 
   evento = {} as Evento;
   form!: FormGroup;
+  estadoSalvar: string = 'post';
+
   constructor(private fb: FormBuilder,
     private localeService: BsLocaleService,
     private router: ActivatedRoute,
@@ -43,9 +45,14 @@ export class EventoDetalheComponent implements OnInit{
   public carregarEvento(): void {
     const eventoId = this.router.snapshot.paramMap.get('id');
 
+
+
     if (eventoId !== null)
     { //+ na frente converte para int
       this.spinner.show();
+
+      this.estadoSalvar = 'put';
+
       this.eventoService.getEventoById(+eventoId).subscribe(
         (evento: Evento) => {
           this.evento = { ...evento }
@@ -80,6 +87,11 @@ export class EventoDetalheComponent implements OnInit{
 
   public validation(): void {
     this.form = this.fb.group({
+      nome: ['',
+        [Validators.minLength(3),
+        Validators.maxLength(50),
+        Validators.required
+        ]],
       tema:['',
         [Validators.minLength(4),
           Validators.maxLength(50),
@@ -98,16 +110,42 @@ export class EventoDetalheComponent implements OnInit{
     });
   }
 
-  resetForm(): void {
+ public resetForm(): void {
     this.form.reset();
   }
 
-  cssValidator(campoForm: FormControl): any {
+  public cssValidator(campoForm: FormControl): any {
     return { 'is-invalid': campoForm.errors && campoForm.touched }
   }
 
+  public saveUpdate(): void {
+    this.spinner.show();
 
 
+
+    if (this.form.valid) {
+
+      this.evento = (this.estadoSalvar === 'post')
+        ? { ...this.form.value }
+        : { id: this.evento.id, ...this.form.value };
+
+      this.eventoService[this.estadoSalvar](this.evento).subscribe(
+        () => { this.toastr.success('Evento salvo com sucesso!', 'Evento Salvo!') },
+        (error: any) => {
+          console.error(error);
+          this.spinner.hide();
+          this.toastr.error('Erro ao salvar Evento.', 'Erro!');
+        },
+        () => this.spinner.hide()
+      );
+    }
+
+    setTimeout(() => {
+      window.location.href = '/eventos/lista';
+    },
+     2000);
+  
+  }
 }
 
 

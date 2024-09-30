@@ -38,7 +38,7 @@ export class EventoListaComponent implements OnInit{
 
   ngOnInit(): void {
     this.spinner.show();
-    this.GetEventos();
+    this.getEventos();
 
     // setTimeout(() => {
     //  //spinner 5 secodns delay
@@ -54,9 +54,6 @@ export class EventoListaComponent implements OnInit{
   public alterarImagem(): void {
     this.exibirImagem1 = !this.exibirImagem1;
   }
-
-
-
 
 
   public get filtroLista(): string {
@@ -78,7 +75,7 @@ export class EventoListaComponent implements OnInit{
     )
   }
 
-  public GetEventos(): void {
+  public getEventos(): void {
     this.eventoService.getEventos().subscribe({
       next: (eventos: Evento[]) => {
         this.eventos = eventos;
@@ -101,7 +98,21 @@ export class EventoListaComponent implements OnInit{
 
   confirm(): void {
     this.modalRef?.hide();
-    this.toastr.success('Evento excluido com sucesso!', 'Evento Excluido!');
+    this.spinner.show();
+
+    this.eventoService.deleteEvento(this.eventoId).subscribe(
+      (result: any) => {
+        if (result.message === 'Deletado') {
+          this.toastr.success('Evento excluido com sucesso!', 'Evento Excluido!');
+          this.getEventos();
+        }
+      },
+      (error: any) => {
+        console.error(error);
+        this.toastr.error(`Erro ao tentar excluir o evento ${this.eventoId}`, 'Erro!');
+      },
+    ).add(() => () => this.spinner.hide());
+  
   }
 
   decline(): void {

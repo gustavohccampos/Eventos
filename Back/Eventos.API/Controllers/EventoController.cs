@@ -139,9 +139,9 @@ public class EventoController : GeralController
 
              if (evento == null) return NoContent();
 
-            return await _eventoService.DeleteEvento(id) ?
-                Ok("Evento Deletado!") :
-               throw new Exception("Erro ao deletar Evento.");
+            return await _eventoService.DeleteEvento(id)
+               ? Ok(new {message = "Deletado"})
+               : throw new Exception("Erro ao deletar Evento.");
             
         }
         catch (Exception ex)

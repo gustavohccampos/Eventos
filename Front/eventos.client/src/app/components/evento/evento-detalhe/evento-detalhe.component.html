@@ -6,6 +6,20 @@
             <!-- Tema / Local e Data/Hora -->
             <div class="row mb-2">
                 <div class="col-md-4">
+                    <label for="nome" class="form-label small">Nome</label>
+                    <input type="text" class="form-control form-control-sm" id="nome"
+                           formControlName="nome"
+                           [ngClass]="cssValidator(f.nome)"
+                           placeholder="Insira o Nome">
+                    <div *ngIf="f.nome.errors?.required" class="invalid-feedback">
+                        Nome é obrigatório.
+                    </div>
+                    <div *ngIf="f.nome.errors?.minlength" class="invalid-feedback">
+                        Nome deve ter no minimo 3 caracteres.
+                    </div>
+                    <div *ngIf="f.nome.errors?.maxlength" class="invalid-feedback">
+                        Nome deve ter no maximo 50 caracteres.
+                    </div>
                     <label for="tema" class="form-label small">Tema</label>
                     <input type="text" class="form-control form-control-sm" id="tema"
                            formControlName="tema"
@@ -108,7 +122,7 @@
     <div class="card-footer d-flex justify-content-between p-2">
         <button class="btn btn-outline-secondary btn-sm" (click)="resetForm()">Cancelar Alteração</button>
 
-        <button class="btn btn-success btn-sm" [disabled]="!form.valid"> 
+        <button class="btn btn-success btn-sm" [disabled]="!form.valid" (click)="saveUpdate()"> 
             <span class="spinner-border spinner-border-sm me-1 d-none" role="status"></span>
             Salvar Evento
         </button>
